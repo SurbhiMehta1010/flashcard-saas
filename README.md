@@ -1,6 +1,6 @@
 Do to:
 
--AI routes for stripe and openai (idk if there is a cost, the key i generated doesnt seem to work) I think we just have to add the keys to the .env.local file for stripe api keys and and ai api key
+-api routes for stripe and openai (idk if there is a cost for openai api keys, the key i generated doesnt seem to work) I think we just have to add the keys to the .env.local file for stripe api keys and and ai api key
 
 -`app/page.js` this file
 
