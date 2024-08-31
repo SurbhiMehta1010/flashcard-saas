@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Container, Box, Grid, Card, CardContent } from '@mui/material';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
+import { SignedOut, SignedIn, SignOutButton } from '@clerk/nextjs';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { keyframes } from '@emotion/react';
 
@@ -12,7 +12,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#00FFFF',
+      main: '#1E90FF', // Dodger Blue as primary color
     },
     background: {
       default: '#000000',
@@ -41,22 +41,50 @@ export default function Home() {
       {/* Navigation Bar */}
       <AppBar position="static" sx={{ background: '#000000' }}>
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, color: '#00FFFF' }}>
+          <Typography variant="h6" sx={{ flexGrow: 1, color: '#1E90FF' }}>
             Flashcard SaaS
           </Typography>
+          <SignedOut>
+            <Button
+              color="inherit"
+              href="/sign-up"
+              sx={{ color: '#1E90FF', mx: 1 }} // Ensures good visibility
+            >
+              Sign Up
+            </Button>
+          </SignedOut>
+          <SignedOut>
+            <Button
+              color="inherit"
+              href="/sign-in"
+              sx={{ color: '#1E90FF', mx: 1 }}
+            >
+              Sign In
+            </Button>
+          </SignedOut>
+          <SignedIn>
+            <SignOutButton>
+              <Button
+                color="inherit"
+                sx={{ color: '#1E90FF', mx: 1 }} // Ensures good visibility
+              >
+                Sign Out
+              </Button>
+            </SignOutButton>
+          </SignedIn>
         </Toolbar>
       </AppBar>
 
       {/* Hero Section */}
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #000000 60%, #00FFFF 100%)',
+          background: 'linear-gradient(135deg, #000000 60%, #1E90FF 100%)', // Black-to-blue gradient
           color: '#fff',
-          py: 5, // Reduced padding
+          py: 5, // Adjust padding as necessary
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '70vh', // Reduced height
+          minHeight: '70vh', // Adjust height as necessary
           textAlign: 'center',
         }}
       >
@@ -81,14 +109,19 @@ export default function Home() {
             <Grid item>
               <SignedOut>
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   size="large"
                   href="/sign-up"
                   sx={{
-                    borderColor: '#00FFFF',
-                    color: '#00FFFF',
+                    backgroundColor: '#1E90FF',
+                    color: '#000000',
+                    border: '2px solid #FFFFFF', // Ensures visibility and contrast
+                    zIndex: 1, // Ensures the button is on top of other elements
                     px: 4,
                     animation: `${dropEffect} 2s ease-out`, // Staggered effect
+                    '&:hover': {
+                      backgroundColor: '#1C86EE', // Slightly darker shade of blue on hover
+                    },
                   }}
                 >
                   Sign Up
@@ -98,14 +131,19 @@ export default function Home() {
             <Grid item>
               <SignedOut>
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   size="large"
                   href="/sign-in"
                   sx={{
-                    borderColor: '#00FFFF',
-                    color: '#00FFFF',
+                    backgroundColor: '#1E90FF',
+                    color: '#000000',
+                    border: '2px solid #FFFFFF', // Ensures visibility and contrast
+                    zIndex: 1, // Ensures the button is on top of other elements
                     px: 4,
                     animation: `${dropEffect} 2.5s ease-out`, // Staggered effect
+                    '&:hover': {
+                      backgroundColor: '#1C86EE', // Slightly darker shade of blue on hover
+                    },
                   }}
                 >
                   Sign In
@@ -120,12 +158,12 @@ export default function Home() {
       <Box
         sx={{
           background: '#000000', // Ensures full-width background with no white space
-          color: '#00FFFF',
+          color: '#1E90FF',
           py: 10,
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center', color: '#00FFFF' }}>
+          <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center', color: '#1E90FF' }}>
             Why Choose Flashcard SaaS?
           </Typography>
           <Grid container spacing={4} sx={{ mt: 4 }}>
@@ -140,14 +178,14 @@ export default function Home() {
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Card
                   sx={{
-                    background: 'transparent', // No fill
-                    border: '1px solid #00FFFF', // Cyan border color
-                    color: '#00FFFF',
+                    background: 'rgba(0, 0, 0, 0.8)', // Dark transparent background fill
+                    border: '1px solid #1E90FF', // Blue border color
+                    color: '#1E90FF',
                     height: '100%',
                     transition: 'transform 0.3s', // Hover effect
                     '&:hover': {
                       transform: 'translateY(-10px)', // Lift on hover
-                      boxShadow: '0 4px 20px rgba(0, 255, 255, 0.4)', // Cyan shadow on hover
+                      boxShadow: '0 4px 20px rgba(30, 144, 255, 0.7)', // Blue shadow on hover
                     },
                   }}
                 >
@@ -167,7 +205,7 @@ export default function Home() {
       </Box>
 
       {/* Footer Section */}
-      <Box sx={{ background: '#000000', color: '#00FFFF', py: 4, textAlign: 'center' }}>
+      <Box sx={{ background: '#000000', color: '#1E90FF', py: 4, textAlign: 'center' }}>
         <Container maxWidth="md">
           <Typography variant="body2">© 2024 Flashcard SaaS. All rights reserved.</Typography>
         </Container>
