@@ -1,4 +1,4 @@
-'use client'; // Mark the component as a client component
+'use client';
 
 import React from 'react';
 import { SignIn } from '@clerk/nextjs';
@@ -11,14 +11,14 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#1E90FF', // Blue as the primary color (Dodger Blue)
+      main: '#1E90FF',
     },
     background: {
-      default: '#000000', // Set default background to black
-      paper: '#000000',   // Set paper background to black
+      default: '#000000',
+      paper: '#000000',
     },
     text: {
-      primary: '#FFFFFF', // White text for contrast
+      primary: '#FFFFFF',
     },
   },
 });
@@ -28,28 +28,28 @@ export default function SignInPage() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container
-        maxWidth={false} // Ensure the container spans the full width of the viewport
+        maxWidth={false}
         sx={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '100vh', // Full screen height
-          backgroundColor: 'background.default', // Use the black background from the theme
+          minHeight: '100vh',
+          backgroundColor: 'background.default',
           textAlign: 'center',
-          m: 0, // Remove any default margins
-          p: 0, // Remove any default padding
+          m: 0,
+          p: 0,
         }}
       >
         <Box
           sx={{
-            background: 'linear-gradient(135deg, #000000 60%, #1E90FF 100%)', // Black-to-blue gradient background for the box
-            color: 'primary.main', // Use primary color from the theme
+            background: 'linear-gradient(135deg, #000000 60%, #1E90FF 100%)',
+            color: 'primary.main',
             py: 5,
             px: 4,
             borderRadius: 2,
-            boxShadow: '0 4px 20px rgba(30, 144, 255, 0.7)', // Dodger Blue shadow effect
-            width: '100%', // Full width for better responsiveness
-            maxWidth: '500px', // Ensure it doesn't get too wide on large screens
+            boxShadow: '0 4px 20px rgba(30, 144, 255, 0.7)',
+            width: '100%',
+            maxWidth: '500px',
           }}
         >
           <Typography variant="h4" gutterBottom>
@@ -59,7 +59,7 @@ export default function SignInPage() {
             Sign in to continue
           </Typography>
           <Box sx={{ mt: 3 }}>
-            <SignIn path="/sign-in" routing="path" afterSignInUrl="/dashboard" />
+            <SignIn path="/sign-in" routing="path" afterSignInUrl="/select" />
           </Box>
         </Box>
       </Container>

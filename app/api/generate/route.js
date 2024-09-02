@@ -2,37 +2,55 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req) {
   try {
-    const data = await req.text();
+    const { prompt, topic } = await req.json();
 
-    console.log("Received data:", data); // Debugging
+    if (!prompt || !topic) {
+      throw new Error('Both prompt and topic are required.');
+    }
 
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
       headers: {
-        "Authorization": `Bearer ${"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"}`, // Ensure your .env file has the correct key
-        "Content-Type": "application/json"
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "model": "meta-llama/llama-3.1-8b-instruct:free",
-        "messages": [
-          { "role": "user", "content": data }
+        model: 'meta-llama/llama-3.1-8b-instruct:free',
+        messages: [
+          {
+            role: 'user',
+            content: `Please create 10 flashcards from the following text for the topic "${topic}". Each flashcard should have a "front" and "back". Only output the front and back text without any numbers or bullets.`,
+          },
+          {
+            role: 'user',
+            content: prompt,
+          },
         ],
       }),
     });
 
-    if (!response.ok) {
-      console.log("Failed response:", response); // Debugging
-      throw new Error("Failed to generate flashcards");
+    const data = await response.json();
+
+    if (!response.ok || !data.choices) {
+      throw new Error(data.error || 'Failed to generate flashcards');
     }
 
-    const completion = await response.json();
-    console.log("API response:", completion); // Debugging
+    const content = data.choices[0].message.content;
 
-    const flashcards = JSON.parse(completion.choices[0].message.content);
+    const flashcards = content.split('\n').reduce((cards, line) => {
+      const [front, back] = line.split('back:');
+      if (front && back) {
+        cards.push({
+          front: front.replace('front:', '').trim(),
+          back: back.trim(),
+        });
+      }
+      return cards;
+    }, []);
 
-    return NextResponse.json(flashcards.flashcards);
+    return NextResponse.json({ results: flashcards });
   } catch (error) {
-    console.error('Error generating flashcards:', error);
-    return NextResponse.json({ error: 'Failed to generate flashcards' }, { status: 500 });
+    console.error('Error generating flashcards:', error.message);
+    return NextResponse.json({ error: error.message || 'Failed to generate flashcards' }, { status: 500 });
   }
 }

@@ -1,4 +1,4 @@
-'use client'; // This marks the component as a client component
+'use client';
 
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Container, Box, Grid, Card, CardContent } from '@mui/material';
@@ -12,7 +12,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#1E90FF', // Dodger Blue as primary color
+      main: '#1E90FF',
     },
     background: {
       default: '#000000',
@@ -48,7 +48,7 @@ export default function Home() {
             <Button
               color="inherit"
               href="/sign-up"
-              sx={{ color: '#1E90FF', mx: 1 }} // Ensures good visibility
+              sx={{ color: '#1E90FF', mx: 1 }}
             >
               Sign Up
             </Button>
@@ -66,7 +66,7 @@ export default function Home() {
             <SignOutButton>
               <Button
                 color="inherit"
-                sx={{ color: '#1E90FF', mx: 1 }} // Ensures good visibility
+                sx={{ color: '#1E90FF', mx: 1 }}
               >
                 Sign Out
               </Button>
@@ -78,13 +78,13 @@ export default function Home() {
       {/* Hero Section */}
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #000000 60%, #1E90FF 100%)', // Black-to-blue gradient
+          background: 'linear-gradient(135deg, #000000 60%, #1E90FF 100%)',
           color: '#fff',
-          py: 5, // Adjust padding as necessary
+          py: 5,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '70vh', // Adjust height as necessary
+          minHeight: '70vh',
           textAlign: 'center',
         }}
       >
@@ -93,7 +93,7 @@ export default function Home() {
             variant="h2"
             component="h1"
             gutterBottom
-            sx={{ animation: `${dropEffect} 1s ease-out` }} // Drop effect on load
+            sx={{ animation: `${dropEffect} 1s ease-out` }}
           >
             Revolutionize Your Study Sessions
           </Typography>
@@ -101,7 +101,7 @@ export default function Home() {
             variant="h5"
             component="h2"
             gutterBottom
-            sx={{ animation: `${dropEffect} 1.5s ease-out` }} // Staggered effect
+            sx={{ animation: `${dropEffect} 1.5s ease-out` }}
           >
             Generate flashcards with AI or create your own collections. Save, manage, and access anytime, anywhere.
           </Typography>
@@ -115,12 +115,12 @@ export default function Home() {
                   sx={{
                     backgroundColor: '#1E90FF',
                     color: '#000000',
-                    border: '2px solid #FFFFFF', // Ensures visibility and contrast
-                    zIndex: 1, // Ensures the button is on top of other elements
+                    border: '2px solid #FFFFFF',
+                    zIndex: 1,
                     px: 4,
-                    animation: `${dropEffect} 2s ease-out`, // Staggered effect
+                    animation: `${dropEffect} 2s ease-out`,
                     '&:hover': {
-                      backgroundColor: '#1C86EE', // Slightly darker shade of blue on hover
+                      backgroundColor: '#1C86EE',
                     },
                   }}
                 >
@@ -137,12 +137,12 @@ export default function Home() {
                   sx={{
                     backgroundColor: '#1E90FF',
                     color: '#000000',
-                    border: '2px solid #FFFFFF', // Ensures visibility and contrast
-                    zIndex: 1, // Ensures the button is on top of other elements
+                    border: '2px solid #FFFFFF',
+                    zIndex: 1,
                     px: 4,
-                    animation: `${dropEffect} 2.5s ease-out`, // Staggered effect
+                    animation: `${dropEffect} 2.5s ease-out`,
                     '&:hover': {
-                      backgroundColor: '#1C86EE', // Slightly darker shade of blue on hover
+                      backgroundColor: '#1C86EE',
                     },
                   }}
                 >
@@ -157,7 +157,7 @@ export default function Home() {
       {/* Features Section */}
       <Box
         sx={{
-          background: '#000000', // Ensures full-width background with no white space
+          background: '#000000',
           color: '#1E90FF',
           py: 10,
         }}
@@ -178,14 +178,14 @@ export default function Home() {
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Card
                   sx={{
-                    background: 'rgba(0, 0, 0, 0.8)', // Dark transparent background fill
-                    border: '1px solid #1E90FF', // Blue border color
+                    background: 'rgba(0, 0, 0, 0.8)',
+                    border: '1px solid #1E90FF',
                     color: '#1E90FF',
                     height: '100%',
-                    transition: 'transform 0.3s', // Hover effect
+                    transition: 'transform 0.3s',
                     '&:hover': {
-                      transform: 'translateY(-10px)', // Lift on hover
-                      boxShadow: '0 4px 20px rgba(30, 144, 255, 0.7)', // Blue shadow on hover
+                      transform: 'translateY(-10px)',
+                      boxShadow: '0 4px 20px rgba(30, 144, 255, 0.7)',
                     },
                   }}
                 >
